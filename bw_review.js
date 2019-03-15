@@ -34,6 +34,19 @@
 
 */
 
+function init() {
+      stars = document.querySelectorAll("span#stars");
+
+      for (var i = 0; i < stars.length; i++) {
+            stars[i].style.cursor = "pointer";
+            document.addEventListener("mouseenter", lightStars);
+      }
+      document.getElementById("comment").document.addEventListener("keyup", updateCount);
+}
+
+function lightStars(e) {
+      var starNumber
+}
 
 
 
