@@ -33,19 +33,47 @@
       within textStr
 
 */
+window.onload = init;
 
 function init() {
-      stars = document.querySelectorAll("span#stars");
-
+      var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < stars.length; i++) {
             stars[i].style.cursor = "pointer";
-            document.addEventListener("mouseenter", lightStars);
+            stars[i].addEventListener("mouseenter", lightStars);
       }
-      document.getElementById("comment").document.addEventListener("keyup", updateCount);
+      document.getElementById("comment").addEventListener("keyup", updateCount);
 }
 
 function lightStars(e) {
-      var starNumber
+      var starNumber = event.target.alt;
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < starNumber; i++) {
+            stars[i].src = "bw_star2.png";
+      }
+      for (var i = starNumber; i < 5; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = starNumber + "stars(s)";
+      stars[i].addEventListener("mouseleave", turnOffStars);
+
+      stars[i].addEventListener("click",
+            function () {
+                  document.removeEventListener("mouseleave", turnOffStars);
+            });
+}
+
+function turnOffStars(e) {
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < stars.length; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = "";
+}
+
+function updateCount() {
+      var commentText = document.getElementById("comment").value;
+      var charCount = countCharacters(commentText);
+      var wordCount =
 }
 
 
