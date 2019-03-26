@@ -35,6 +35,8 @@
 */
 window.onload = init;
 
+//this block of code will make the cursor a diffrent style making it look like a glove 
+
 function init() {
       var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < stars.length; i++) {
@@ -44,8 +46,10 @@ function init() {
       document.getElementById("comment").addEventListener("keyup", updateCount);
 }
 
+//this will light the stars when hovered over and it will give them an orange color to indicate they are being hovered over they will also target the star that is being hovered over
+
 function lightStars(e) {
-      var starNumber = event.target.alt;
+      var starNumber = e.target.alt;
       var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < starNumber; i++) {
             stars[i].src = "bw_star2.png";
@@ -62,6 +66,8 @@ function lightStars(e) {
             });
 }
 
+//this will turn off the stars when they are not being hovered over
+
 function turnOffStars(e) {
       var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < stars.length; i++) {
@@ -70,10 +76,20 @@ function turnOffStars(e) {
       document.getElementById("rating").value = "";
 }
 
+//this block of code will make ancounter for the number of words there are in the text box, if it goes over the limit it will turn red indicating that ther is to many and if not it will just stay white it will use a counter to count the words
+
 function updateCount() {
       var commentText = document.getElementById("comment").value;
       var charCount = countCharacters(commentText);
-      var wordCount =
+      var wordCountBox = document.getElementById("wordCount");
+      wordCountBox.value = charCount + "/1000";
+      if (charCount > 1000) {
+            wordCountBox.style.color = "white";
+            wordCountBox.style.background = "red";
+      } else {
+            wordCountBox.style.color = "black";
+            wordCountBox.style.background = "white";
+      }
 }
 
 
